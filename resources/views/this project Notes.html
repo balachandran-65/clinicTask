@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors project Notes</title>
+</head>
+<body>
+    <!-- this below link check of table values same or not in slot time and date -->
+    https://saasforest.slack.com/archives/D05B11D6J2V/p1690344899222819
+    https://saasforest.slack.com/archives/D05B11D6J2V/p1690350052214439
+
+<!-- appointment page -->
+    {{-- checking purpose code below two lines --}}
+    {{-- <p>selecteddoctor={{$selectDoctor}}::selectDate={{substr($selectDate,0,3)}}::selectTime={{$selectTime}}</p>
+    <p><button wire:click="bookSlot('{{$selectDoctor}}','{{$selectDate}}','{{$selectTime}}')" class=" bg-red-400 p-3 m-3 ">BooK</button></p> --}}
+
+
+    {{-- checking purpose code of below endif untill --}}
+{{-- <p>Session Value: {{ session('my_session_variabl') }}</p>
+@if (session()->has('success'))
+<div class="alert alert-success bg-green-300 p-6" >
+    <script>alert("Added successfully")</script>
+</div>
+@endif --}}
+{{-- <div :class="slotClick=='{{$afternoonSlot}}'? slotClickStyle:slotBookStyle">{{$afternoonSlot}}</div>
+                // <div @click="slotClick='{{$afternoonSlot}}'" :class="slotClick=='{{$afternoonSlot}}'? slotClickStyle:slotDefaultStyle">{{$afternoonSlot}}</div> --}}
+
+
+                <h1 class="bg-gray-600 text-white">selecteddoctor={{$selectDoctor}},,,{{$currentDate}}:: selectDate={{$selectDate}}::selectDate={{$currentTime}}</h1>
+                <!-- appointment page end-->
+    //   dd($doc_id." ".substr($date,-9,-7)." ".$slotTime);
+
+
+ appointment page:code in available slots/////////
+    // below this code use table retrive date 
+    //this dynamic dates for repective doctors from table data 
+
+    // $records =slotTimes::where('slot_id',$this->selectDoctor)->get();
+    // $this->tableTimes=$records->pluck('time')->toArray();
+    // $arr=count($this->tableTimes);
+    // if($this->selectDoctor){
+    //     dd($arr);
+    // }
+//     foreach($this->tableTimes as $Times){
+       
+//         $afternoon_start=date('H:i:s',strtoTime('12:00:01'));
+//         $evening_start=date('H:i:s',strtoTime('16:00:00'));
+//         if($Times < $afternoon_start){
+    
+//             $this->morningSlots[]= $Times;
+//         }
+//         else{
+//                 if($Times >=$afternoon_start && $Times<=$evening_start){
+//                     $this->afternoonSlots[]= $Times;
+//                 }
+//                 else{
+//             $this->eveningSlots[]= $Times;
+//                 }
+//             }
+//    }
+
+<!-- information page  -->
+
+@if (session()->has('patientId'))
+      <div class="alert alert-success" role="alert">
+          {{ session('success') }}
+          {{ session('doctor_id') }} {{ session('select_date') }} {{ session('slot_Time') }}
+      </div>
+      @endif
+      @if ($healthConcern)
+      <p>User ID: {{$healthConcern}}</p>
+  @endif
+  <!-- information page end -->
+
+    // doctor & date wise work below this code
+    // $re =slots::where('date',$this->selectDate)->get();
+    // $this->eve=$re->pluck('id')->toarray();
+
+    // $recor =slotTimes::where('slot_id',$this->eve)->get();
+    // $this->eveningSlots=$recor->pluck('time')->toArray();
+
+
+
+
+    <!-- /* $this->currentDate = now()->format('l, F j, Y ');
+// $this->currentMonth = now()->format('F');
+// $this->currentweeksWithDate = now()->format('l');
+
+ // public $afternoonSlots=['12:30 PM','01:00 ','9:00','01:40 PM','03:00 PM','04:10 PM'];
+    // public $eveningSlots=['4.30 PM','22-07-20203 05:00 PM','06:00 PM','07:00 PM'];
+
+                       
+/*
+$defaultTime = strtotime('12:00 PM');
+
+$defaultTime = strtotime('12:00 PM');
+
+// Increment the time dynamically in 30 minutes for 5 times
+for ($i = 0; $i < 5; $i++) {
+    // Print the current time
+    echo date('h:i A', $defaultTime) . PHP_EOL;
+
+    // Increment the time by 30 minutes
+    $defaultTime = strtotime('+30 minutes', $defaultTime);
+}
+
+12:00 PM
+12:30 PM
+01:00 PM
+01:30 PM
+02:00 PM
+
+
+
+date_default_timezone_set('Your/Desired/Timezone');
+
+
+$currentDateTime = time(); // Get the current Unix timestamp
+$interval = 30 * 60; // 30 minutes in seconds
+$numberOfDays = 7;
+$dateTimes = [];
+
+for ($day = 0; $day < $numberOfDays; $day++) {
+    for ($time = strtotime('12:00 AM', $currentDateTime); $time <= strtotime('11:59 PM', $currentDateTime); $time += $interval) {
+        $dateTimes[] = date('Y-m-d H:i:s', $time);
+    }
+    $currentDateTime += 24 * 60 * 60; // Move to the next day (86400 seconds = 24 hours)
+}
+
+
+$expiryTimestamp = strtotime('2023-07-31 10:00 PM'); // Example expiry timestamp
+
+foreach ($dateTimes as &$dateTime) {
+    $timestamp = strtotime($dateTime);
+    if ($timestamp < $expiryTimestamp) {
+        // Disable the expired date-time combination
+        $dateTime = ['datetime' => $dateTime, 'expired' => true];
+    } else {
+        // Keep the non-expired date-time combination
+        $dateTime = ['datetime' => $dateTime, 'expired' => false];
+    }
+}
+
+*/ -->
+</body>
+</html>
+
+
